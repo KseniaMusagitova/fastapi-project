@@ -5,3 +5,4 @@ app_example.egg-info/SOURCES.txt
 app_example.egg-info/dependency_links.txt
 app_example.egg-info/requires.txt
 app_example.egg-info/top_level.txt
+scripts/create_db.py

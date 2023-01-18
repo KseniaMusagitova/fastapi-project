@@ -4,7 +4,7 @@ from enum import Enum
 
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import Session
-from sqlalchemy.exc.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 
 
 from app.config import DATABASE_URL
@@ -41,7 +41,16 @@ class Post(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     title = Column(String)
     topic = Column(String)
-    status = Column(String)
+    status = Column(String, default=PostStatus.PLANED.value)
     created_at = Column(String, default=datetime.utcnow())
+
+
+class AuthToken(Base):
+    __tablename__ = "auth_token"
+    id = Column(Integer, primary_key=True)
+    token = Column(String)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    created_at = Column(String, default=datetime.utcnow())
+
 
 
